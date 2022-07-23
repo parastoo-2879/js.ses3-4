@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu 1</title>
+  <style>
+    body {
+      /* background-color: #00f2a1; */
+      background-color: #303B47;
+
+    }
+
+    .menuIcon {
+      width: 50px;
+      height: 50px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      transition: 1s;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    .menuIcon>span {
+      display: flex;
+      width: 80%;
+      height: 3px;
+      background-color: aliceblue;
+      transition: 1s;
+
+    }
+
+    span:nth-of-type(1),
+    span:nth-of-type(3) {
+      transform-origin: bottom left;
+    }
+
+    .menu {
+      width: 30%;
+      height: 80vh;
+      position: absolute;
+      transform-origin: top left;
+      transform: rotate(-270deg);
+      opacity: 0;
+      transition: 1s;
+    }
+
+    .menu ul {
+      position: absolute;
+      top: 50px;
+      width: 70%;
+      height: 70%;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-around;
+    }
+
+    a {
+
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      text-decoration: none;
+      padding: 15px;
+    }
+
+    .menu li {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background-color: #fff;
+      list-style-type: none;
+      transform: translateX(-150%);
+      opacity: 0;
+      transition: all 1s ease-in-out;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menuIcon" onclick="menuClick(this)">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav class="menu">
+    <ul>
+      <li><a href="">HOME</a></li>
+      <li><a href="">ABOUT</a></li>
+      <li><a href="">CONTACT</a></li>
+      <li><a href="">GALLERY</a></li>
+    </ul>
+  </nav>
+</body>
+<script>
+  let flag = 1
+  let Menu = document.getElementsByClassName("menu")[0]
+  let _li = document.querySelectorAll(".menu>ul>li")
+  function menuClick(self) {
+    let _span = self.children
+    console.log(_span)
+    if (flag % 2) {
+      self.style.transform = "rotate(180deg)"
+      _span[0].style.transform = "translateX(22px)rotate(42deg)"
+      _span[0].style.width = "50%"
+      _span[1].style.transform = "translateY(-0.5px)"
+      _span[2].style.transform = "translateX(22px)rotate(-42deg)"
+      _span[2].style.width = "50%"
+      Menu.style.transform = "rotate(0deg)"
+      Menu.style.opacity = "1"
+      for (i = 0; i < _li.length; i++) {
+        _li[i].style.transitionDelay = (i / 4) + "s"
+        _li[i].style.transform = "translateX(0px)"
+        _li[i].style.opacity = "1"
+      }
+
+    }
+    else {
+      self.style.transform = "rotate(-180deg)"
+      _span[0].style.transform = "translateX(0px)rotate(0deg)"
+      _span[0].style.width = "80%"
+      _span[1].style.transform = "translateY(0px)"
+      _span[2].style.transform = "translateX(0px)rotate(0deg)"
+      _span[2].style.width = "80%"
+
+
+      for (i = 0; i < _li.length; i++) {
+        _li[i].style.transitionDelay = (i / 4) + "s"
+        _li[i].style.transform = "translateX(-150%)"
+        _li[i].style.opacity = 0
+      }
+      Menu.style.transform = "rotate(-270deg)"
+      Menu.style.opacity = 0
+    }
+    flag++
+
+  }
+</script>
+
+</html>

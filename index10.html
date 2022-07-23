@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu3</title>
+  <style>
+    body {
+      background-color: #303B47;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      padding: 0;
+      opacity: 0;
+      font-size: 20px;
+      transition: all 1s;
+    }
+
+    .menu {
+      border-top: 2px solid white;
+      border-bottom: 2px solid white;
+      height: 10px;
+      width: 30px;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s;
+    }
+
+    .menu>ul {
+      display: none;
+      opacity: 0;
+      transition: all 1s;
+    }
+
+    .menu>ul>li {
+      list-style-type: none;
+      transition: all .4s;
+    }
+
+    .menu>ul>li:hover {
+      background-color: #ffffff3f;
+    }
+
+    .anime2 {
+      animation: anime2 2s 1s ease forwards;
+    }
+
+    @keyframes anime2 {
+      to {
+        opacity: 1;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="menu" onclick="_click()">
+    <ul>
+      <li><a>Home</a></li>
+      <li><a>Blog</a></li>
+      <li><a>About</a></li>
+      <li><a>Contact</a></li>
+    </ul>
+  </nav>
+</body>
+<script>
+  let _nav = document.getElementsByTagName("nav")[0]
+  let _ul = document.getElementsByTagName("ul")[0]
+  let _a = document.querySelectorAll("ul>li>a")
+  let flag = true
+  console.log(_a)
+  function _click() {
+    if (flag) {
+      _nav.style.width = "400px"
+      _nav.style.height = "100px"
+      _ul.style.opacity = "1"
+      _ul.style.display = "flex"
+      for (i = 0; i < _a.length; i++) {
+        _a[i].setAttribute("class", "anime2")
+      }
+    }
+    else {
+      _nav.style.width = "30px"
+      _nav.style.height = "10px"
+      _ul.style.display = "none"
+
+    }
+    flag = !flag
+  }
+</script>
+
+</html>
